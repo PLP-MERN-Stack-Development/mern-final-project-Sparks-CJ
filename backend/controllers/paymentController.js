@@ -1,18 +1,22 @@
 // backend/controllers/paymentController.js
-export const payForTicket = async (req, res) => {
+import Stripe from "stripe";
+import Ticket from "../models/Ticket.js";
+import Event from "../models/Event.js";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+export const createPaymentIntent = async (req, res) => {
   try {
-    const { amount, currency } = req.body;
+    const { amount } = req.body;
 
-    // Mock stripe response
-    const fakePaymentId = "pay_" + Math.random().toString(36).substring(2, 10);
-
-    return res.json({
-      message: "Payment successful (mock)",
-      paymentId: fakePaymentId,
-      amount,
-      currency
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount * 100,
+      currency: "usd",
+      automatic_payment_methods: { enabled: true }
     });
+
+    res.json({ clientSecret: paymentIntent.client_secret });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
