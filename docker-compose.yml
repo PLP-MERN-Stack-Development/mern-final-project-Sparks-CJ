@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    command: npm run dev
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/event-manager-dev
+      - JWT_SECRET=devsecret
+      - CLIENT_URL=http://localhost:5173
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/usr/src/app
+
+  frontend:
+    build: ./frontend
+    command: npm run dev -- --host
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000/api
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/usr/src/app
+
+volumes:
+  mongo_data:
