@@ -1,50 +1,39 @@
+// frontend/src/pages/Login.jsx
 import React from "react";
 import { useForm } from "react-hook-form";
+import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import api from "../api/api";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const schema = yup.object({
-  email: yup.string().email().required("Email required"),
-  password: yup.string().required("Password required")
+const schema = Yup.object({
+  email: Yup.string().email().required(),
+  password: Yup.string().required()
 });
 
 export default function Login() {
-  const nav = useNavigate();
-  const { register, handleSubmit, formState: { errors, isSubmitting } } =
-    useForm({ resolver: yupResolver(schema) });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (data) => {
-    try {
-      const res = await api.post("/auth/login", data);
-      localStorage.setItem("token", res.data.token);
-      nav("/dashboard");
-    } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
-    }
+    const res = await axios.post("/api/auth/login", data);
+    localStorage.setItem("token", res.data.token);
+    alert("Logged in!");
   };
 
   return (
-    <div className="max-w-md mx-auto p-4">
-      <h1 className="text-xl font-bold mb-3">Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+    <div className="auth-page">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input placeholder="Email" {...register("email")} />
+        <p>{errors.email?.message}</p>
 
-        <div>
-          <label>Email</label>
-          <input {...register("email")} className="border p-2 w-full" />
-          <p className="text-red-500 text-sm">{errors.email?.message}</p>
-        </div>
+        <input placeholder="Password" type="password" {...register("password")} />
+        <p>{errors.password?.message}</p>
 
-        <div>
-          <label>Password</label>
-          <input type="password" {...register("password")} className="border p-2 w-full" />
-          <p className="text-red-500 text-sm">{errors.password?.message}</p>
-        </div>
-
-        <button disabled={isSubmitting} className="bg-blue-600 text-white px-4 py-2 rounded">
-          Login
-        </button>
+        <button>Login</button>
       </form>
     </div>
   );
