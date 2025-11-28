@@ -1,52 +1,52 @@
-# MERN Stack Capstone Project
+# Event Manager MERN Project
 
-This assignment focuses on designing, developing, and deploying a comprehensive full-stack MERN application that showcases all the skills you've learned throughout the course.
+## About the Project
 
-## Assignment Overview
+The **Event Manager MERN Project** is a full-stack application designed to simplify the management of events for organizers and attendees. Users can **create, manage, and register for events** through an intuitive interface. The backend provides a robust RESTful API for handling event data, while the frontend offers a **responsive and interactive experience** using React.
 
-You will:
-1. Plan and design a full-stack MERN application
-2. Develop a robust backend with MongoDB, Express.js, and Node.js
-3. Create an interactive frontend with React.js
-4. Implement testing across the entire application
-5. Deploy the application to production
+This project demonstrates full-stack development skills, including:
 
-## Getting Started
+- Structuring a Node.js and Express backend
+- Connecting and querying a MongoDB database
+- Building a dynamic React frontend
+- Implementing CRUD (Create, Read, Update, Delete) operations
+- Deploying a full-stack project on modern cloud platforms (Render and Vercel)
 
-1. Accept the GitHub Classroom assignment
-2. Clone the repository to your local machine
-3. Follow the instructions in the `Week8-Assignment.md` file
-4. Plan, develop, and deploy your capstone project
+---
 
-## Files Included
+## Why I Chose This Project
 
-- `Week8-Assignment.md`: Detailed assignment instructions
+1. **Practical Application:** Event management is widely used in real life—from conferences to social gatherings. This project allowed me to create something that has tangible use.  
 
-## Requirements
+2. **Full-Stack Exposure:** I wanted to **combine backend and frontend skills** into one cohesive project. This includes integrating a database, API, and UI into a complete application.  
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git and GitHub account
-- Accounts on deployment platforms (Render/Vercel/Netlify/etc.)
+3. **Deployment Experience:** The project gave me hands-on experience deploying both backend and frontend services on cloud platforms, which is crucial for real-world software development.  
 
-## Project Ideas
+4. **Learning and Growth:** Choosing this project challenged me to **think about architecture, data flow, user experience, and security**, which strengthened my overall development skills.  
 
-The `Week8-Assignment.md` file includes several project ideas, but you're encouraged to develop your own idea that demonstrates your skills and interests.
+---
 
-## Submission
+## Features
 
-Your project will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+- User registration and authentication
+- Event creation, editing, and deletion
+- Event registration for attendees
+- Responsive UI with React
+- RESTful API built with Node.js and Express
+- MongoDB database for storing events and user data
+- Deployed on Render (backend) and Vercel (frontend)
 
-1. Commit and push your code regularly
-2. Include comprehensive documentation
-3. Deploy your application and add the live URL to your README.md
-4. Create a video demonstration and include the link in your README.md
+---
 
-## Resources
+## Setup Instructions
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [GitHub Classroom Guide](https://docs.github.com/en/education/manage-coursework-with-github-classroom) 
+### Prerequisites
+
+- Node.js (v22+)
+- npm
+- MongoDB (local or hosted)
+- Git
+
+---
+DEPLOYMENT URL: 
+https://mern-final-project-sparks-cj.onrender.com
